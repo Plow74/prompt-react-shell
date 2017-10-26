@@ -1,0 +1,9 @@
+.taskheader_wrapper {
+  background: #0770b2;
+  color: #fff;
+}
+
+.indicator_position {
+  float: right;
+  position: relative;
+}
