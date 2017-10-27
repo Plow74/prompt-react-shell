@@ -2,9 +2,11 @@ import React, { Component }  from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import 'react-tabs/style/react-tabs.css';
+import './TaskContainer.css'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TaskGroup from '../TaskGroup';
 import {fetchTasksIfNeeded, invalidateTab, selectTab} from "../../actions/index";
+import StatusIndicator from "../StatusIndicator/StatusIndicator";
 
 class TaskContainer extends Component {
     constructor(props) {
@@ -44,10 +46,30 @@ class TaskContainer extends Component {
                     {!isFetching && tasks.length === 0 && <h2>Empty.</h2>}
                     <Tabs selectedIndex={selectedTabIndex} onSelect={this.handleChange}>
                         <TabList>
-                            <Tab>All</Tab>
-                            <Tab>Not Started</Tab>
-                            <Tab>In Progress</Tab>
-                            <Tab>Completed</Tab>
+                            <Tab>
+                                <div className="tab_stripe all_tab"/>
+                                <div>
+                                    All
+                                </div>
+                            </Tab>
+                            <Tab>
+                                <div className="tab_stripe notstarted_tab"/>
+                                <div>
+                                    Not Started <StatusIndicator status={0}/>
+                                </div>
+                            </Tab>
+                            <Tab>
+                                <div className="tab_stripe inprogress_tab"/>
+                                <div>
+                                    In Progress <StatusIndicator status={1}/>
+                                </div>
+                            </Tab>
+                            <Tab>
+                                <div className="tab_stripe completed_tab"/>
+                                <div>
+                                    Completed <StatusIndicator status={2}/>
+                                </div>
+                            </Tab>
                         </TabList>
 
                         <TabPanel>
