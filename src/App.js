@@ -4,13 +4,12 @@ import {Nav, NavItem} from 'react-bootstrap'
 import 'react-tabs/style/react-tabs.css';
 import './App.css';
 
-
 class AsyncApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
             activeKey: 1
-        }
+        };
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -27,7 +26,7 @@ class AsyncApp extends Component {
                     <NavItem eventKey={3}>TASK</NavItem>
                 </Nav>
                 <div className="col-lg-3">
-                    {this.state.activeKey == 3 ? <TaskContainer /> : null}
+                    {this.state.activeKey === 3 ? <TaskContainer /> : null}
 
                 </div>
                 <div className="col-lg-9">
