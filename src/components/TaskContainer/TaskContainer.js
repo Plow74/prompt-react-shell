@@ -6,7 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TaskGroup from '../TaskGroup';
 import {fetchTasksIfNeeded, invalidateTab, selectTab} from "../../actions/index";
 
-class TaskTab extends Component {
+class TaskContainer extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -69,7 +69,7 @@ class TaskTab extends Component {
     }
 }
 
-TaskTab.propTypes = {
+TaskContainer.propTypes = {
     selectedTabIndex: PropTypes.number.isRequired,
     tasks: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
@@ -97,4 +97,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(TaskTab)
+export default connect(mapStateToProps)(TaskContainer)

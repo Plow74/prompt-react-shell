@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import TaskTab from './components/TaskTab';
+import TaskContainer from './components/TaskContainer';
 import 'react-tabs/style/react-tabs.css';
 
 const AsyncApp = () => (
@@ -20,7 +20,7 @@ const AsyncApp = () => (
                         <div>Move Along</div>
                     </TabPanel>
                     <TabPanel>
-                        <TaskTab />
+                        <TaskContainer />
                     </TabPanel>
                 </Tabs>
             </div>
