@@ -2,6 +2,14 @@ body {
   background-color: #e4e4e4;
 }
 
+.banner{
+  background: #337ab7;
+}
+
+.inactive_menu{
+  color: #fff;
+}
+
 .todo-input {
   margin-right: 10px;
 }
@@ -15,6 +23,18 @@ body {
   margin-bottom: 8px;  
 }
 
-button {
-  border-radius: 2px;
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  color: white;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #337ab7 !important;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
 }

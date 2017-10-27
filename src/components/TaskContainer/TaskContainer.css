@@ -30,3 +30,11 @@
     margin-right: 4px;
     cursor: pointer;
 }
+
+.scrollable {
+    max-height: 800px !important;
+    margin: 0 auto;
+    bottom:0px;
+    top:0px;
+    overflow:auto
+}

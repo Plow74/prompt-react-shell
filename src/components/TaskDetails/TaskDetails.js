@@ -3,7 +3,7 @@ import './TaskDetails.css';
 import FontAwesome from 'react-fontawesome';
 
 const TaskDetails = ({taskDetails}) => (
-  <div className="taskdetails_wrapper container-fluid">
+  <div>
       <div className="row">
           <div className="col-xs-1">
               <FontAwesome name="hospital-o"/>

@@ -40,8 +40,8 @@ class TaskContainer extends Component {
     render() {
         const { selectedTabIndex, isFetching, lastUpdated, tasks } = this.props;
         return (
-            <div className="row">
-                <div className="col-lg-12">
+            <div className="container-fluid">
+
                     {isFetching && tasks.length === 0 && <h2>Loading...</h2>}
                     {!isFetching && tasks.length === 0 && <h2>Empty.</h2>}
                     <Tabs selectedIndex={selectedTabIndex} onSelect={this.handleChange}>
@@ -71,7 +71,7 @@ class TaskContainer extends Component {
                                 </div>
                             </Tab>
                         </TabList>
-
+                        <div className="scrollable">
                         <TabPanel>
                             <TaskGroup tasks={tasks}/>
                         </TabPanel>
@@ -84,8 +84,9 @@ class TaskContainer extends Component {
                         <TabPanel>
                             <TaskGroup tasks={tasks.filter(task => task.status === 2)}/>
                         </TabPanel>
+                        </div>
                     </Tabs>
-                </div>
+
             </div>
         )
     }
