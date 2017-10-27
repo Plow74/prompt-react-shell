@@ -1,0 +1,15 @@
+.progressindicator_wrapper {
+
+}
+
+.status_completed {
+    color: #78D965;
+ }
+
+.status_inprogress {
+    color: #FFB161;
+ }
+
+.status_notstarted {
+    color: #C42C3B;
+ }

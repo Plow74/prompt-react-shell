@@ -67,7 +67,7 @@ function shouldFetchPosts(state, subreddit) {
     }
 }
 
-function shouldFetchTasks(state, selectedTabIndex) {
+function shouldFetchTasks(state, selectedTabIndex = 0) {
     const tasks = state.tasksForTab[selectedTabIndex];
     if(!tasks){
         return true;

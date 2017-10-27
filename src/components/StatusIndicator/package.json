@@ -1,0 +1,6 @@
+{
+  "name": "StatusIndicator",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./StatusIndicator.js"
+}

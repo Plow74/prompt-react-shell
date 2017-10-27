@@ -1,3 +1,9 @@
 .task_wrapper {
   border: solid 1px black;
 }
+
+.status{
+  background-color: white;
+  text-align: center;
+  justify-content: center;
+}

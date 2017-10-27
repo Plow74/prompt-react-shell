@@ -26,8 +26,7 @@ class TaskTab extends Component {
     }
 
     handleChange(selectedTabIndex) {
-        this.props.dispatch(selectTab(selectedTabIndex));
-        this.props.dispatch(fetchTasksIfNeeded(selectedTabIndex))
+       //more logic can go here to handle tab changes if needed
     }
 
     handleRefreshClick(e) {
@@ -55,13 +54,13 @@ class TaskTab extends Component {
                             <TaskGroup tasks={tasks}/>
                         </TabPanel>
                         <TabPanel>
-                            <TaskGroup tasks={tasks}/>
+                            <TaskGroup tasks={tasks.filter(task => task.status === 0)}/>
                         </TabPanel>
                         <TabPanel>
-                            <TaskGroup tasks={tasks}/>
+                            <TaskGroup tasks={tasks.filter(task => task.status === 1)}/>
                         </TabPanel>
                         <TabPanel>
-                            <TaskGroup tasks={tasks}/>
+                            <TaskGroup tasks={tasks.filter(task => task.status === 2)}/>
                         </TabPanel>
                     </Tabs>
                 </div>
