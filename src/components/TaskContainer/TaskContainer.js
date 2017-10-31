@@ -5,7 +5,7 @@ import 'react-tabs/style/react-tabs.css';
 import './TaskContainer.css'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TaskGroup from '../TaskGroup';
-import { fetchTasksIfNeeded, invalidateTab, selectTab } from "../../actions/index";
+import { fetchTasks, invalidateTab, selectTab } from "../../actions/index";
 import StatusIndicator from "../StatusIndicator/StatusIndicator";
 import ItemCounter from "../ItemCounter";
 import FontAwesome from 'react-fontawesome';
@@ -19,39 +19,34 @@ class TaskContainer extends Component {
 
     componentDidMount() {
         const { dispatch, selectedTabIndex } = this.props;
-        dispatch(fetchTasksIfNeeded(selectedTabIndex))
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.selectedTabIndex !== prevProps.selectedTab) {
-            const { dispatch, selectedTabIndex } = this.props;
-            dispatch(fetchTasksIfNeeded(selectedTabIndex))
-        }
+        dispatch(fetchTasks())
     }
 
     handleChange(selectedTabIndex) {
         //more logic can go here to handle tab changes if needed
+        console.log('handleChange function - You changed to tab ' + selectedTabIndex);
     }
 
     handleRefreshClick(e) {
         e.preventDefault();
-        const { dispatch, selectedTabIndex } = this.props;
-        dispatch(fetchTasksIfNeeded(selectedTabIndex))
+        const { dispatch } = this.props;
+        dispatch(fetchTasks())
     }
+    
     render() {
-        const { selectedTabIndex, isFetching, lastUpdated, tasks, taskCount } = this.props;
+        const { isFetching, lastUpdated, tasks, taskCount } = this.props;
         return (
             <div className="container-fluid">
-                {isFetching && tasks.length === 0 && <h2>Loading...</h2>}
+                {isFetching && tasks.length === 0 && <h2>Loading...<FontAwesome name="spinner" spin size="3x"/></h2>}
                 {!isFetching && tasks.length === 0 && <h2>Empty.</h2>}
                 {!isFetching && tasks.length > 0 &&
                     <div>
                         <div className="row pull-right">
                             <div className="col-sm-12">
-                                <a href="#" title="refresh list" onClick={this.handleRefreshClick}><FontAwesome name="refresh" size='2x'/></a>
+                                <a href="#" title="refresh list" onClick={this.handleRefreshClick}><FontAwesome name="refresh"/></a>
                             </div>
                         </div>
-                        <Tabs selectedIndex={selectedTabIndex} onSelect={this.handleChange}>
+                        <Tabs onSelect={this.handleChange}>
                             <TabList>
                                 <Tab>
                                     <div className="tab_stripe all_tab" />
@@ -101,7 +96,6 @@ class TaskContainer extends Component {
 }
 
 TaskContainer.propTypes = {
-    selectedTabIndex: PropTypes.number.isRequired,
     taskCount: PropTypes.number.isRequired,
     tasks: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
@@ -110,21 +104,19 @@ TaskContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const { tasksForTab, selectedTabIndex } = state;
+    const { receivedTasks } = state;
     const {
         isFetching,
         lastUpdated,
         items: tasks,
         taskCount: taskCount,
-    } = tasksForTab[selectedTabIndex] || {
+    } = receivedTasks || {
             isFetching: true,
             items: [],
-            selectedTabIndex: 0,
             count: 0
         };
 
     return {
-        selectedTabIndex,
         tasks,
         isFetching,
         lastUpdated,

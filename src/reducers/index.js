@@ -12,30 +12,24 @@ function selectedTab(state = 0, action){
     }
 }
 
-function tasks(
+function receivedTasks(
     state = {
         isFetching: false,
-        didInvalidate: false,
-        items: []
+        items: [],
+        taskCount: 0
     },
     action)
 {
     switch (action.type) {
-        case types.INVALIDATE_TAB:
-            return Object.assign({}, state, {
-                didInvalidate: true
-            });
-            break;
         case types.REQUESTS_TASKS:
             return Object.assign({}, state, {
                 isFetching: true,
-                didInvalidate: false
+                items: action.tasks
             });
             break;
         case types.RECEIVE_TASKS:
             return Object.assign({}, state, {
                 isFetching: false,
-                didInvalidate: false,
                 items: action.tasks,
                 lastUpdated: action.receivedAt,
                 taskCount: action.tasks.length
@@ -47,23 +41,8 @@ function tasks(
     }
 }
 
-function tasksForTab(state = {}, action) {
-    switch (action.type) {
-        case types.INVALIDATE_TAB:
-        case types.RECEIVE_TASKS:
-        case types.REQUESTS_TASKS:
-            return Object.assign({}, state, {
-                [action.selectedTabIndex]: tasks(state[action.selectedTabIndex], action)
-            });
-            break;
-        default:
-            return state;
-            break;
-    }
-}
-
 const rootReducer = combineReducers({
-    tasksForTab,
+    receivedTasks,
     selectedTab
 })
 
