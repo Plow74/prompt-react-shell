@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch'
 function fetchTasks(tasks){
     return dispatch => {
         dispatch(requestTasks(tasks));
-        return fetch(`http://www.filltext.com/?rows=50&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&status={numberRange|0,%203}&location={lorem|3}&date={date}&pretty=true`)
+        return fetch(`http://www.filltext.com/?rows=!1000&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&status={numberRange|0,%202}&location={lorem|3}&date={date}&pretty=true`)
             .then(response => response.json())
             .then(json => dispatch(receiveTasks(tasks, json)))
     }

@@ -37,7 +37,8 @@ function tasks(
                 isFetching: false,
                 didInvalidate: false,
                 items: action.tasks,
-                lastUpdated: action.receivedAt
+                lastUpdated: action.receivedAt,
+                taskCount: action.tasks.length
             });
             break;
         default:
