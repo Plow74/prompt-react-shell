@@ -1,5 +1,5 @@
 {
-  "name": "my-react-todolist",
+  "name": "prompt-ui",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -34,6 +34,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "7.0.0-beta.3",
     "babel-preset-stage-2": "7.0.0-beta.3",
+    "bootstrap-sass": "^3.3.7",
     "browser-sync": "^2.18.13",
     "chai": "^4.0.2",
     "css-loader": "^0.28.7",
@@ -49,7 +50,28 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
     "jest": "^21.2.1",
+    "null-loader": "^0.1.1",
+    "pixrem": "^4.0.1",
+    "pleeease-filters": "^4.0.0",
+    "postcss": "^6.0.13",
+    "postcss-calc": "^6.0.1",
+    "postcss-color-function": "^4.0.0",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-custom-properties": "^6.2.0",
+    "postcss-custom-selectors": "^4.0.1",
+    "postcss-flexbugs-fixes": "^3.2.0",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.8",
+    "postcss-media-minmax": "^3.0.0",
+    "postcss-nested": "^2.1.2",
+    "postcss-nesting": "^4.2.1",
+    "postcss-pseudoelements": "^5.0.0",
+    "postcss-selector-matches": "^3.0.1",
+    "postcss-selector-not": "^3.0.1",
+    "prettier": "^1.7.4",
     "prop-types": "^15.5.10",
     "react-deep-force-update": "^2.1.1",
     "react-dev-utils": "^4.1.0",
@@ -75,31 +97,12 @@
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.9.3",
     "webpack-hot-middleware": "^2.20.0",
     "webpack-node-externals": "^1.6.0"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{json,graphql}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{css,less,styl,scss,sass,sss}": [
-      "stylelint --fix",
-      "git add"
-    ]
-  },
   "scripts": {
-    "selenium-setup": "selenium-standalone install",
-    "selenium-start": "selenium-standalone start",
-    "e2e-tests": "wdio wdio.conf.js",
-    "e2e-tests-watch": "wdio wdio.conf.js --watch",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "webpack-dev-server",
+    "build": "webpack"
   }
 }

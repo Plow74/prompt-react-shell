@@ -5,8 +5,8 @@ import 'react-tabs/style/react-tabs.css';
 import './TaskContainer.css'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TaskGroup from '../TaskGroup';
-import { fetchTasks, invalidateTab, selectTab } from "../../actions/index";
-import StatusIndicator from "../StatusIndicator/StatusIndicator";
+import { fetchTasks, selectTab } from "../../actions/index";
+import StatusIndicator from "../StatusIndicator";
 import ItemCounter from "../ItemCounter";
 import FontAwesome from 'react-fontawesome';
 
